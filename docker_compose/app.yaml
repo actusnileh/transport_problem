@@ -1,0 +1,16 @@
+services:
+    fastapi:
+        container_name: transport_problem_fastapi
+        build: ..
+        ports:
+            - "${FASTAPI_PORT}:8000"
+            - "${DEBUG_PORT}:5678"
+        command: "debugpy --listen 0.0.0.0:5678 -m uvicorn --factory src.main:create_app --reload --host 0.0.0.0 --port 8000"
+        volumes:
+            - ..:/app
+        networks:
+            - transport_network
+
+networks:
+    transport_network:
+        driver: bridge
