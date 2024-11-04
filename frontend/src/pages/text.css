@@ -1,0 +1,44 @@
+@keyframes gradient-animation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes sparkle-animation {
+    0%,
+    100% {
+        opacity: 0.8;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+.gradient-text {
+    background: linear-gradient(
+        270deg,
+        #ff7e5f,
+        #feb47b,
+        #ff7e5f,
+        #8fd3f4,
+        #81a8e3,
+        #ff6f61,
+        #ffb74d,
+        #6ebe9a,
+        #ffccf9,
+        #ffa07a,
+        #ff7f50,
+        #ff6347
+    );
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-animation 15s ease infinite,
+        sparkle-animation 25s ease-in-out infinite;
+}

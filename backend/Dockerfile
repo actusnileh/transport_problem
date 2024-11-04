@@ -3,7 +3,7 @@ FROM python:3.12.7-slim-bullseye
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-WORKDIR /app
+WORKDIR /backend
 
 RUN apt update -y && \
     apt install -y --no-install-recommends python3-dev && \

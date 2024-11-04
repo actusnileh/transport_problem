@@ -1,0 +1,17 @@
+services:
+    frontend:
+        container_name: transport_problem_javascript
+        build:
+            context: ../frontend
+            dockerfile: Dockerfile
+        ports:
+            - "5171:5173"
+        command: /bin/sh -c "pnpm run dev --host"
+        volumes:
+            - ../frontend:/frontend
+        networks:
+            - transport_network
+
+networks:
+    transport_network:
+        driver: bridge

@@ -1,15 +1,16 @@
 DC = docker compose
-APP_FILE = docker_compose/app.yaml
-ENV_FILE = --env-file .env
+BACKEND_FILE = docker_compose/backend.yaml
+FRONTEND_FILE = docker_compose/frontend.yaml
 
-.PHONY: build
-build:
-	${DC} -f ${APP_FILE} ${ENV_FILE} up --build -d
+.PHONY: all
+all:
+	${DC} -f ${FRONTEND_FILE} up --build -d
+	${DC} -f ${BACKEND_FILE} up --build -d
 
 .PHONY: drop-all
 drop-all:
-	${DC} -f ${APP_FILE} down
+	${DC} -f ${BACKEND_FILE} -f ${FRONTEND_FILE}  down
 
 .PHONY: logs
 logs:
-	${DC} -f ${APP_FILE} ${ENV_FILE}  logs -f
+	${DC} -f ${BACKEND_FILE} -f ${FRONTEND_FILE} logs -f
